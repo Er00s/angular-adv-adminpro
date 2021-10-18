@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+/* MODULOS EXTERNOS */
+import { ChartsModule } from 'ng2-charts';
 /* MODULOS */
 import { AppRoutingModule } from './app-routing.module';
 import { PagesModule } from './pages/pages.module';
@@ -15,6 +17,7 @@ import { NopagefoundComponent } from './nopagefound/nopagefound.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +26,7 @@ import { NopagefoundComponent } from './nopagefound/nopagefound.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ChartsModule,
     PagesModule,
     AuthModule
   ],
