@@ -1,29 +1,32 @@
 <div id="main-wrapper">
+  <app-header></app-header>
 
-    <app-header></app-header>
+  <app-sidebar></app-sidebar>
 
-    <app-sidebar></app-sidebar>
+  <div class="page-wrapper">
+    <div class="container-fluid">
+      <!-- breadCrumbs -->
 
-    <div class="page-wrapper">
-        <div class="container-fluid">
-            <!-- breadCrumbs -->
+      <app-breadcrumbs></app-breadcrumbs>
 
-            <app-breadcrumbs></app-breadcrumbs>
+      <!-- sistema de rutas -->
+      <router-outlet></router-outlet>
+<!-- 
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-body"></div>
+          </div>
+        </div>        
+      </div> -->
 
-            <!-- sistema de rutas -->
-            <router-outlet></router-outlet>
-         
-        </div>
-        <!-- ============================================================== -->
-        <!-- footer -->
-        <!-- ============================================================== -->
-        <footer class="footer">
-            © 2017 Admin Pro by wrappixel.com
-        </footer>
-        <!-- ============================================================== -->
-        <!-- End footer -->
-        <!-- ============================================================== -->
+      <!-- ============================================================== -->
+      <!-- footer -->
+      <!-- ============================================================== -->
+      <footer class="footer">© 2017 Admin Pro by wrappixel.com</footer>
+      <!-- ============================================================== -->
+      <!-- End footer -->
+      <!-- ============================================================== -->
     </div>
-
-
+  </div>
 </div>
