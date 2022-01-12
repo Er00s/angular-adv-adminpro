@@ -45,7 +45,10 @@
           >
           <ul aria-expanded="false" class="collapse">
             <li *ngFor= "let subMenuItem of item.submenu " >
-                <a [routerLink]="subMenuItem.url" >
+                <a [routerLink]="subMenuItem.url" 
+                routerLinkActive="active"                
+                [routerLinkActiveOptions]="{exact: true}" >
+                <!--ESTA OPCION HACE QUE EL SEA EXACTA LA RUTA PARA QUE NO COINCIDA TAMBIEN CON EL MAIN YA QUE EL RESTO SON SUBRUTAS DEL MISMO -->
                     {{subMenuItem.tittle}}
                 </a>
             </li>
