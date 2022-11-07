@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
@@ -51,8 +51,19 @@ export class UsuarioService {
   }
 
   login(formData: LoginForm) {
-    return this.http.post(`${base_url}/login`, formData).pipe(
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Origin': '*'
+      })
+    };
+
+    let itemToSent = this.userMapperToDTO(formData);
+
+    return this.http.post(`${base_url}/Auth/Login`, itemToSent,httpOptions ).pipe(      
       tap((resp: any) => {
+        console.log(resp)
         localStorage.setItem('token', resp.token);
       })
     );
@@ -95,8 +106,15 @@ export class UsuarioService {
       this.ngZone.run(()=>{
         this.router.navigateByUrl('/login');
       })    
-    });
+    });    
+  }
 
-    
+  userMapperToDTO(formData: LoginForm){
+    let userToSent = <any>{};
+
+    userToSent.Username = formData.username;
+    userToSent.Password = formData.password;
+
+    return userToSent;
   }
 }

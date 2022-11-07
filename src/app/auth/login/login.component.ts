@@ -17,11 +17,11 @@ export class LoginComponent implements OnInit {
 
   public loginForm = this.fb.group({
     //test100@gmail.com
-    email: [
-      localStorage.getItem('email') || '',
-      [Validators.required, Validators.minLength(3), Validators.email],
+    username: [
+      localStorage.getItem('username') || '',
+      [Validators.required, Validators.minLength(3)],
     ],
-    password: ['1234567', [Validators.required]],
+    password: ['', [Validators.required]],
     remember: [false],
   });
 
@@ -35,13 +35,15 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.renderButton();
   }
+
   login() {
+    debugger
     this.usuarioService.login(this.loginForm.value).subscribe(
       (resp) => {
         if (this.loginForm.get('remember').value) {
-          localStorage.setItem('email', this.loginForm.get('email').value);
+          localStorage.setItem('username', this.loginForm.get('username').value);
         } else {
-          localStorage.removeItem('email');
+          localStorage.removeItem('username');
         }
         //navega al dashboard
         this.router.navigateByUrl('/');
@@ -52,7 +54,7 @@ export class LoginComponent implements OnInit {
       }
     );
 
-    // this.router.navigateByUrl('/');
+     //this.router.navigateByUrl('/');
   }
 
   //GOOGLE
